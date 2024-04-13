@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import './loginStyle.css';
 
 import { jwtDecode } from 'jwt-decode'; // Corrected import
 
@@ -43,14 +42,15 @@ const Login = () => {
 
     return (
         <>
-            <div className="container">
-                <Row className='vh-100 justify-content-center align-items-center'>
-                    <Col md={8} lg={6} xs={12}>
-                        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <button onClick={handleLogin}>Login</button>
-                    </Col>
-                </Row>
+            <div className="login-container">
+                    <div className='login-box'>
+                    <h1 className='login-tittle'>Login</h1>
+                        <div className='email-pass-container'>
+                            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className='login-items'/>
+                            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className='login-items'/>
+                        </div>
+                        <button onClick={handleLogin} className='login-button'>Login</button>
+                    </div>
             </div>
         </>
     );
