@@ -1,0 +1,30 @@
+import React from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "bootstrap/dist/css/bootstrap.css";
+
+import Dashboard from './Dashboard';
+import Login from './Login';
+
+const App = () => {
+  return (
+    <>
+    <Router>
+      <Container>
+        <Row>
+          <Col md={12}>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+          </Col>
+         </Row>
+      </Container>
+    </Router>
+    </>
+  );
+}
+
+export default App;
