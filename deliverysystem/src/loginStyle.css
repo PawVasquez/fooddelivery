@@ -3,71 +3,70 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
+
 .login-box {
     display: flex;
     flex-direction: column;
     padding: 30px;
-    width: 400px;
-    height: 500px;
+    width: 350px;
     border-radius: 15px;
     align-items: center;
-    justify-content: center;
-    /* background-color: #8EC5FC; */
-    background-color: #FAD961;
-    background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+    background-color: #fff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #1f1b1b;
 }
+
 .email-pass-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
     width: 100%;
-    margin-bottom: 40px;
-    position: relative;
-    bottom: 30px;
+    margin-top: 25px;
 }
+
 .login-button {
-    width: 50%;
+    width: 100%;
     border: none;
-    background-color: rgb(249, 181, 65);
-    height: 50px;
-    width: 200px;
-    border-radius: 15px;
-    border: 1.3px solid #000;
-    position: relative;
-    bottom: 45px;
+    background-color: #6c63ff;
+    color: #ffffff;
+    height: 45px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.login-button:hover {
+    background-color: #5a52cc;
 }
 
 .login-items {
-    border-radius: 15px;
-    border: 1px solid #000;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
     height: 45px;
     padding: 10px;
+    box-sizing: border-box;
 }
+
 .login-items:focus {
-    outline: none;
-}
-.login-items {
-    caret-color: transparent; /* Hide the original caret */
+    border-color: #6c63ff;
 }
 
-.login-items::after {
-    content: '|'; /* Create a new caret */
-    color: black; /* Set the color of the new caret */
-    animation: blink 1s step-end infinite; /* Make the new caret blink */
+.login-items::placeholder {
+    color: #aaa;
 }
 
-@keyframes blink {
-    from, to { color: transparent }
-    10% { color: black }
+.login-title {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 25px;
 }
-.login-tittle {
-    font-size: 30px;
-    font-weight: bold;
-    position: relative;
-    bottom: 70px;
-}
+
 .login-image {
-    width: 35px;
-    height:35px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 25px;
 }
