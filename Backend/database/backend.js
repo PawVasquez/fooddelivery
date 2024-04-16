@@ -1,3 +1,3 @@
 module.exports = {
-    secretKey: "rneri-secret-key",
+    secretKey: "paw-secret-key",
 }
