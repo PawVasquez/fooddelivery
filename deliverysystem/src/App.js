@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.css";
 
-import Dashboard from './Dashboard';
+import Dashboard from './Admin';
 import Login from './Login';
 
 const App = () => {
@@ -16,6 +16,7 @@ const App = () => {
         <Row>
           <Col md={12}>
             <Routes>
+              <Route path='/admin' element={<admin />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
