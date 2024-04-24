@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, ListGroup, Badge, Form, FormControl, Modal, Dropdown, Navbar, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Table, Modal, Dropdown } from 'react-bootstrap';
 import './App.css';
 
 const FoodItem = ({ item, addToCart }) => {
@@ -26,13 +26,24 @@ const Cart = ({ cartItems, saveOrder }) => {
   return (
     <div>
       <h2>Cart</h2>
-      <ListGroup>
-        {cartItems.map((item, index) => (
-          <ListGroup.Item key={index}>
-            {item.name} - ${item.price} <Badge variant="primary">{item.quantity}</Badge>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cartItems.map((item, index) => (
+            <tr key={index}>
+              <td>{item.name}</td>
+              <td>${item.price}</td>
+              <td>{item.quantity}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
       <p>Total: ${totalPrice}</p>
       <Button variant="success" onClick={handleCheckout}>Checkout</Button>
     </div>
@@ -51,12 +62,26 @@ const Order = ({ order, index, deleteOrder, updateOrderStatus }) => {
   };
 
   return (
-    <ListGroup.Item key={index}>
-      {order.items.map((item, idx) => (
-        <span key={idx}>
-          {item.name} - ${item.price} <Badge variant="primary">{item.quantity}</Badge><br />
-        </span>
-      ))}
+    <div>
+      <h2>Order {index + 1}</h2>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {order.items.map((item, idx) => (
+            <tr key={idx}>
+              <td>{item.name}</td>
+              <td>${item.price}</td>
+              <td>{item.quantity}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
       <p>Total: ${order.items.reduce((acc, item) => acc + item.price * item.quantity, 0)}</p>
       <Dropdown>
         <Dropdown.Toggle variant="secondary">
@@ -72,14 +97,13 @@ const Order = ({ order, index, deleteOrder, updateOrderStatus }) => {
         {editMode ? 'Save' : 'Edit'}
       </Button>
       <Button variant="danger" onClick={() => deleteOrder(index)}>Delete</Button>
-    </ListGroup.Item>
+    </div>
   );
 };
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [orders, setOrders] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   const addToCart = (item) => {
@@ -147,17 +171,6 @@ const App = () => {
 
   return (
     <Container>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#">Food Delivery</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">About</Nav.Link>
-            <Nav.Link href="#">Contact</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
       <Row>
         <Col>
           <h1>Food Delivery System</h1>
@@ -206,11 +219,9 @@ const App = () => {
       <Row>
         <Col>
           <h2>Orders</h2>
-          <ListGroup>
-            {orders.map((order, index) => (
-              <Order key={index} order={order} index={index} deleteOrder={deleteOrder} updateOrderStatus={updateOrderStatus} />
-            ))}
-          </ListGroup>
+          {orders.map((order, index) => (
+            <Order key={index} order={order} index={index} deleteOrder={deleteOrder} updateOrderStatus={updateOrderStatus} />
+          ))}
         </Col>
       </Row>
     </Container>

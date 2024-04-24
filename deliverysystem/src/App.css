@@ -208,16 +208,4 @@ h2 {
     }
 }
 
-/* Responsive */
-@media (max-width: 768px) and (orientation: landscape) {
-    .container {
-        padding: 10px 0; /* Adjust padding to remove space */
-        max-width: 100%; /* Adjust max-width to fit landscape */
-        margin: 0 auto; /* Center container */
-    }
 
-    .card {
-        width: calc(50% - 20px); /* Adjust card width for landscape */
-        margin: 0 10px 20px; /* Add margin between cards */
-    }
-}
